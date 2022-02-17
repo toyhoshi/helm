@@ -7,11 +7,9 @@ This repository contains:
 - an helm chart to install kube-prometheus-stack with an easy example of dashboard and alert
 - a script to automate the provisioning of a local Kubernetes cluster
 
-Some sensible defaults are provided out of the box but many customisations are possible.
-
 ## Requirements
-To install and run these examples you need:
-- Have docker installed before proceeding.
+You should have installed at least:
+- Docker
 - Python 3.10+
 
 Generate python requirements using pip freeze, more important are:
@@ -191,12 +189,26 @@ Connecto to prometheus UI, with url [http://localhost:9090](http://localhost:909
 Connect to Grafana UI, with url [http://localhost:8081](http://localhost:8081)
 ![Screenshot](assets/grafana_dashboard.png)
 
+## Automate provisiong/deployment
+
+### Local Kubernetes cluster
+To spin up Kubernetes cluster we use simple bash script, we make a simplified version of [https://github.com/mateusmuller/kind-madeeasy](https://github.com/mateusmuller/kind-madeeasy). When the cluster is ready, the helm charts related to the service and to the prometheus stack are installed.
+
 
 ### Design
-### It works ? :-)
-### Improvements
+The design of everything from the cluster to the application is very basic: "keep it as simple as possible".
 
+### It works ?
+On principle it works. :-)
+
+### Improvements
+There are certainly improvements everywhere:
+- Increase replica count, statefulsets
+- Ingresss controller, load balancer, etc..
+- Horizontal Pod Autoscaling...
+- PodSecurityPolicy...
+- Define "best" metrics: Response Time, Request Latency, Queued Time and Queue Size, CPU Usage, etc...
+- Rules, alert, dashboard are really basic, but they show what can be done
 
 ## License
-
 Sre-Labs is licensed under the **[MIT License](LICENSE)** (the "License"); you may not use this software except in compliance with the License.
