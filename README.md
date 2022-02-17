@@ -37,12 +37,12 @@ To implement the standalone HTTP web application I use Python, specifically usin
 
 ### Running the application
 To verify that our service is working you can choose:
-- python: python3 webapp/srvpro.py
-- docker (docker push toyhoshi/sre-labs-webapp:0.4): docker run -p 8080:8080 -it sre-labs-webapp
+- python: `python3 webapp/srvpro.py`
+- docker (docker push toyhoshi/sre-labs-webapp:0.4): `docker run -p 8080:8080 -it sre-labs-webapp`
 - kubernetes: 
-    - export NODE_PORT=$(kubectl get --namespace sre-labs -o jsonpath="{.spec.ports[0].nodePort}" services sre-labs-webapp-sre-labs-webapp-chart)
-    - export NODE_IP=$(kubectl get nodes --namespace sre-labs -o jsonpath="{.items[0].status.addresses[0].address}")
-    - echo http://$NODE_IP:$NODE_PORT
+    - `export NODE_PORT=$(kubectl get --namespace sre-labs -o jsonpath="{.spec.ports[0].nodePort}" services sre-labs-webapp-sre-labs-webapp-chart)`
+    - `export NODE_IP=$(kubectl get nodes --namespace sre-labs -o jsonpath="{.items[0].status.addresses[0].address}")`
+    - `echo http://$NODE_IP:$NODE_PORT`
 
 ### Example
 You'll be able to access the application from [http://localhost:8080](http://localhost:8080) or for example from [http://172.18.0.4:31722](http://172.18.0.4:31722) if you use kubernetes.
